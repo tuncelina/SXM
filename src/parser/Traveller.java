@@ -13,9 +13,6 @@ public class Traveller {
 	private List<Trip> trips = new ArrayList<>();
 	private String note;
 
-	public Traveller() {
-	}
-
 	public String getNote() {
 		return note;
 	}

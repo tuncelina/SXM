@@ -9,6 +9,24 @@ import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
 public class DOMParser {
+	// Nacitanie xml suboru
+	public TravelAgency readXML(File xmlSubor) {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder parser;
+		try {
+			parser = dbf.newDocumentBuilder();
+		} catch (ParserConfigurationException e) {
+			throw new RuntimeException("Can't create parser", e);
+		}
+		Document doc;
+		try {
+			doc = parser.parse(xmlSubor);
+		} catch (Exception e) {
+			throw new RuntimeException("Unable to create or parse XML document", e);
+		}
+
+		return createTravelAgency(doc.getDocumentElement());
+	}
 
 	private TravelAgency createTravelAgency(Element xmlTravelAgency) {
 		// Overime, ci elementom je naozaj TravelAgency
@@ -18,11 +36,8 @@ public class DOMParser {
 		// Vytvorime TravelAgency a nastavime mu atributy
 		TravelAgency travelAgency = new TravelAgency();
 
-		String name = xmlTravelAgency.getAttribute("name");
-		travelAgency.setName(name);
-
-		int year = Integer.parseInt(xmlTravelAgency.getAttribute("year"));
-		travelAgency.setYear(year);
+		travelAgency.setName(xmlTravelAgency.getAttribute("name"));
+		travelAgency.setYear(Integer.parseInt(xmlTravelAgency.getAttribute("year")));
 
 		// Vyberieme child nodes korenoveho elementa (TechnicalSupport, Consultants,
 		// Clients)
@@ -82,6 +97,28 @@ public class DOMParser {
 		return travelAgency;
 	}
 
+	// Metoda na vytvorenie objektu Person z elementu
+	private Person createPerson(Element personElement) {
+		Person person = new Person();
+
+		person.setRole(personElement.getAttribute("role"));
+		person.setId(personElement.getAttribute("id"));
+		person.setAccessLevel(Integer.parseInt(personElement.getAttribute("accessLevel")));
+		person.setName(personElement.getAttribute("name"));
+
+		return person;
+	}
+
+	// Metoda na vytvorenie objektu Consultant z elementu
+	private Consultant createConsultant(Element consultantElement) {
+		Consultant consultant = new Consultant();
+
+		consultant.setSpecialization(consultantElement.getAttribute("specialization"));
+		consultant.setName(consultantElement.getAttribute("name"));
+
+		return consultant;
+	}
+
 	// Metoda na vytvorenie objektu Traveller z elementu
 	private Traveller createTraveller(Element travellerElement) {
 		Traveller traveller = new Traveller();
@@ -122,6 +159,18 @@ public class DOMParser {
 		traveller.setNote(note.getTextContent());
 
 		return traveller;
+	}
+
+	// Vratenie child elementu v danom elemente
+	private Element returnChildElement(Element xmlElement, String elementName) {
+		NodeList xmlDeti = xmlElement.getChildNodes();
+		for (int i = 0; i < xmlDeti.getLength(); i++) {
+			Node xmlDieta = xmlDeti.item(i);
+			if ((xmlDieta instanceof Element) && (elementName.equals(xmlDieta.getNodeName()))) {
+				return (Element) xmlDieta;
+			}
+		}
+		return null;
 	}
 
 	// Metoda na vytvorenie objektu Trip z elementu
@@ -170,65 +219,9 @@ public class DOMParser {
 		return ft;
 	}
 
-	// Metoda na vytvorenie objektu Consultant z elementu
-	private Consultant createConsultant(Element consultantElement) {
-		Consultant consultant = new Consultant();
-
-		consultant.setSpecialization(consultantElement.getAttribute("specialization"));
-		consultant.setName(consultantElement.getAttribute("name"));
-
-		return consultant;
-	}
-
-	// Metoda na vytvorenie objektu Person z elementu
-	private Person createPerson(Element personElement) {
-		Person person = new Person();
-
-		person.setRole(personElement.getAttribute("role"));
-		person.setId(personElement.getAttribute("id"));
-		person.setAccessLevel(Integer.parseInt(personElement.getAttribute("accessLevel")));
-		person.setName(personElement.getAttribute("name"));
-
-		return person;
-	}
-
-	// Vratenie child elementu v danom elemente
-	private Element returnChildElement(Element xmlElement, String elementName) {
-		NodeList xmlDeti = xmlElement.getChildNodes();
-		for (int i = 0; i < xmlDeti.getLength(); i++) {
-			Node xmlDieta = xmlDeti.item(i);
-			if ((xmlDieta instanceof Element) && (elementName.equals(xmlDieta.getNodeName()))) {
-				return (Element) xmlDieta;
-			}
-		}
-
-		return null;
-	}
-
-	// Nacitanie xml suboru
-	public TravelAgency readXML(File xmlSubor) {
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		DocumentBuilder parser;
-
-		try {
-			parser = dbf.newDocumentBuilder();
-		} catch (ParserConfigurationException e) {
-			throw new RuntimeException("Can't create parser", e);
-		}
-		Document doc;
-		try {
-			doc = parser.parse(xmlSubor);
-		} catch (Exception e) {
-			throw new RuntimeException("Unable to create or parse XML document", e);
-		}
-
-		return createTravelAgency(doc.getDocumentElement());
-	}
-
 	public static void main(String[] args) {
 		DOMParser domParser = new DOMParser();
 		TravelAgency ta = domParser.readXML(new File("TravelAgency.xml"));
-		System.out.println(ta.toString());
+		System.out.println(ta);
 	}
-
 }

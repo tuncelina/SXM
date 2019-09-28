@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TravelAgency name="Wondering eye" >
+	<Staff month="">
+		<TechnicalSupport>
+			<SupportAgent id="ts#001" accessLevel="1"
+				name="Andrej Serenčko" />
+			<SupportAgent id="ts#002" accessLevel="1"
+				name="Tomaš Neviemaky" />
+			<SupportAgent id="ts#003" accessLevel="1"
+				name="Stanislav Medzernik" />
+			<JuniorAdministrator accessLevel="2"
+				name="Lex Luthor" />
+			<SeniorAdministrator accessLevel="3"
+				name="Dexter Morgan" />
+		</TechnicalSupport>
+
+		<Consultants>
+			<Consultant specialization="Europe"
+				name="Yevhenii Kozhevin" />
+			<Consultant specialization="United Arab Emirates"
+				name="Olha Charna" />
+			<Consultant specialization="Asia" name="Tünde Pappová" />
+			<Consultant specialization="Africa" name="Vitaliy Shepa" />
+			<Consultant specialization="North America"
+				name="Julia Pogorniats" />
+			<Consultant specialization="South America"
+				name="Vladimir Tkachuk" />
+			<Consultant specialization="Australia" name="Tomáš Bajtoš" />
+			<Consultant specialization="Antarctica"
+				name="Olya Kolesnikova" />
+		</Consultants>
+	</Staff>
+
+	<Clients>
+		<Traveller id="00450376" >
+			<Name>Jana</Name>
+			<Surname>Hrašková</Surname>
+			<EMail>jana.hraskova@gmail.com</EMail>
+			<PhoneNumber>+421987654321</PhoneNumber>
+			
+			<Trips>
+				<Trip title="Munich and it's team" date="30.10.2016"
+					duration="3 days">
+					<Way>Krakov - Praha - Munich - Neuschwanstein caste - Vienna</Way>
+					<FellowTraveller type="husband">Michal Hraško
+					</FellowTraveller>
+				</Trip>
+				<Trip title="Royal holiday" date="10.05.2018" duration="6 days">
+					<Way>Dresden - Amsterdam - Edinburgh - London - Brusel - Rhenish
+						fortress
+					</Way>
+					<FellowTraveller type="husband">Michal Hraško
+					</FellowTraveller>
+					<FellowTraveller type="daughter">Petra Hrašková
+					</FellowTraveller>
+				</Trip>
+			</Trips>
+			<Note>Has a 30% discount for a next trip</Note>
+		</Traveller>
+
+		<Traveller id="21812315">
+			<Name>Jozko</Name>
+			<Surname>Mrkvicka</Surname>
+			<EMail>jozko.mrkvicka@student.upjs.sk</EMail>
+			<PhoneNumber>+421284654329</PhoneNumber>
+
+			<Trips></Trips>
+			<Note></Note>
+		</Traveller>
+
+		<Traveller id="41273370">
+			<Name>Ivan</Name>
+			<Surname>Urgant</Surname>
+			<EMail>ivan.urgant@mail.ru</EMail>
+			<PhoneNumber>+79266106195</PhoneNumber>
+			
+			<Trips>
+				<Trip title="Halloween" date="31.10.2019" duration="5 days"
+					discount="5%">
+					<Way>Moscow - Mayami</Way>
+				</Trip>
+			</Trips>
+			<Note></Note>
+		</Traveller>
+	</Clients>
+</TravelAgency>

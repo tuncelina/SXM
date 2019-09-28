@@ -11,9 +11,6 @@ public class TravelAgency {
 	private List<Consultant> consultants = new ArrayList<>();
 	private List<Traveller> travellers = new ArrayList<>();
 
-	public TravelAgency() {
-	}
-
 	public String getName() {
 		return name;
 	}

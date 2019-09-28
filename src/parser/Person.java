@@ -7,9 +7,6 @@ public class Person {
 	private int accessLevel;
 	private String name;
 
-	public Person() {
-	}
-
 	public String getRole() {
 		return role;
 	}
@@ -46,5 +43,4 @@ public class Person {
 	public String toString() {
 		return "Person [role: " + role + ", id: " + id + ", accessLevel: " + accessLevel + ", name: " + name + "]";
 	}
-
 }

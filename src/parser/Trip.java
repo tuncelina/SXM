@@ -12,9 +12,6 @@ public class Trip {
 	private String way;
 	private List<FellowTraveller> fellowTravellers = new ArrayList<>();
 
-	public Trip() {
-	}
-
 	public String getTitle() {
 		return title;
 	}

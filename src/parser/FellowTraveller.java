@@ -5,9 +5,6 @@ public class FellowTraveller {
 	private String type;
 	private String name;
 
-	public FellowTraveller() {
-	}
-
 	public String getType() {
 		return type;
 	}
@@ -26,7 +23,6 @@ public class FellowTraveller {
 
 	@Override
 	public String toString() {
-		return "[type: " + type + ", name: " + name + "]";
+		return "FellowTraveller[type: " + type + ", name: " + name + "]";
 	}
-
 }

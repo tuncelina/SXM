@@ -5,9 +5,6 @@ public class Consultant {
 	private String specialization;
 	private String name;
 
-	public Consultant() {
-	}
-
 	public String getSpecialization() {
 		return specialization;
 	}
@@ -28,5 +25,4 @@ public class Consultant {
 	public String toString() {
 		return "Consultants [specialization: " + specialization + ", name: " + name + "]";
 	}
-
 }
